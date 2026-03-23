@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JobSeek | Post Job</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="post">
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="logo" href="index.html">JobSeek</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="jobs.html">Jobs</a></li>
+        <li><a href="internships.html">Internships</a></li>
+        <li><a href="post.html">Post Job</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container section">
+    <h1>Post a Job</h1>
+    <form id="postForm" class="form-card">
+      <input type="text" name="title" placeholder="Job Title" required />
+      <input type="text" name="company" placeholder="Company" required />
+      <input type="text" name="location" placeholder="Location" required />
+      <select name="type" required>
+        <option value="">Select Type</option>
+        <option value="Full-time">Full-time</option>
+        <option value="Remote">Remote</option>
+      </select>
+      <textarea name="description" placeholder="Description" rows="5" required></textarea>
+      <button type="submit">Post Job</button>
+    </form>
+  </main>
+
+  <footer class="footer"><div class="container"><p>© 2026 JobSeek.</p></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>

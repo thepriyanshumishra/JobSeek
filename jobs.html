@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JobSeek | Jobs</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="jobs">
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="logo" href="index.html">JobSeek</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="jobs.html">Jobs</a></li>
+        <li><a href="internships.html">Internships</a></li>
+        <li><a href="post.html">Post Job</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container section">
+    <h1>Browse Jobs</h1>
+    <div class="filters">
+      <input id="jobsSearch" type="text" placeholder="Search jobs..." />
+      <select id="jobsFilter">
+        <option value="all">All Types</option>
+        <option value="Full-time">Full-time</option>
+        <option value="Remote">Remote</option>
+      </select>
+    </div>
+    <div id="jobsList" class="cards"></div>
+  </main>
+
+  <footer class="footer"><div class="container"><p>© 2026 JobSeek.</p></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
