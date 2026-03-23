@@ -85,41 +85,50 @@ function renderCards(data, containerId, isLimited = false) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  container.innerHTML = '';
-  const displayData = isLimited ? data.slice(0, 3) : data;
+  container.innerHTML = '<div class="empty-state">Loading...</div>';
 
-  if (displayData.length === 0) {
-    container.innerHTML = '<div class="empty-state">No results found matching your criteria.</div>';
-    return;
-  }
+  setTimeout(() => {
+    container.innerHTML = '';
+    const displayData = isLimited ? data.slice(0, 3) : data;
 
-  displayData.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'card fade-in';
-    
-    // Icons based on type (simple SVGs as text)
-    const locationIcon = `<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>`;
-    const briefcaseIcon = `<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>`;
+    if (displayData.length === 0) {
+      container.innerHTML = '<div class="empty-state">No results found matching your criteria.</div>';
+      return;
+    }
 
-    card.innerHTML = `
-      <div class="card-header">
-        <div>
-          <h3 class="card-title">${item.title}</h3>
-          <div class="card-company">${item.company}</div>
+    displayData.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card fade-in';
+      
+      // Icons based on type (simple SVGs as text)
+      const locationIcon = `<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>`;
+      const briefcaseIcon = `<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>`;
+
+      const userPostedHtml = item.id.startsWith('usr_') ? `<span class="card-badge" style="background:var(--success); color:white; margin-right: 0.5rem;">User Posted</span>` : '';
+
+      card.innerHTML = `
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">${item.title}</h3>
+            <div class="card-company">${item.company}</div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            ${userPostedHtml}
+            <span class="card-badge">${item.type}</span>
+          </div>
         </div>
-        <span class="card-badge">${item.type}</span>
-      </div>
-      <div class="card-body">
-        <div class="card-meta">
-          <span>${locationIcon} ${item.location}</span>
-          <span>${briefcaseIcon} ${item.type}</span>
+        <div class="card-body">
+          <div class="card-meta">
+            <span>${locationIcon} ${item.location}</span>
+            <span>${briefcaseIcon} ${item.type}</span>
+          </div>
+          <p class="card-desc">${item.description}</p>
         </div>
-        <p class="card-desc">${item.description}</p>
-      </div>
-      <a href="details.html?id=${item.id}" class="btn btn-outline" style="width: 100%;">View Details</a>
-    `;
-    container.appendChild(card);
-  });
+        <a href="details.html?id=${item.id}" class="btn btn-outline" style="width: 100%;">View Details</a>
+      `;
+      container.appendChild(card);
+    });
+  }, 300);
 }
 
 /**
@@ -159,7 +168,11 @@ function setupHomeSearch() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const query = document.getElementById('homeSearchInput').value;
+    const query = document.getElementById('homeSearchInput').value.trim();
+    if (!query) {
+      alert("Please enter a search term");
+      return;
+    }
     // Redirect to jobs page with query params
     window.location.href = `jobs.html?search=${encodeURIComponent(query)}`;
   });
@@ -213,9 +226,16 @@ function loadDetails() {
         </p>
       </div>
 
-      <button class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;" onclick="alert('Application submitted successfully (Mock Demo)')">Apply Now</button>
+      <button class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;" onclick="handleApply()">Apply Now</button>
     </div>
   `;
+}
+
+window.handleApply = function() {
+  let count = parseInt(localStorage.getItem('js_apply_count') || '0');
+  count++;
+  localStorage.setItem('js_apply_count', count);
+  alert(`Application submitted! Total applications: ${count}`);
 }
 
 /**
@@ -247,8 +267,8 @@ function setupPostForm() {
     form.reset();
     
     setTimeout(() => {
-      alertBox.classList.remove('success');
-    }, 3000);
+      window.location.href = 'jobs.html';
+    }, 1500);
   });
 }
 

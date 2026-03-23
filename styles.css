@@ -222,7 +222,7 @@ a {
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
   box-shadow: var(--shadow-lg);
   border-color: var(--primary-light);
 }
@@ -394,6 +394,8 @@ footer {
   background: white;
   border-radius: var(--radius);
   border: 1px dashed var(--border-color);
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .fade-in {
@@ -407,8 +409,15 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
   .nav-links {
-    display: none; /* In a real app we'd add a hamburger menu */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
   }
   .hero h1 {
     font-size: 2rem;
