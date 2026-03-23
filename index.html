@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobSeek - Find Your Dream Job</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1.2em" width="1.2em" xmlns="http://www.w3.org/2000/svg"><path d="M432 160h-96V112c0-26.5-21.5-48-48-48h-64c-26.5 0-48 21.5-48 48v48H80c-26.5 0-48 21.5-48 48v224c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V208c0-26.5-21.5-48-48-48zM208 112h96v48h-96v-48z"></path></svg>
+        JobSeek
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="jobs.html">Jobs</a></li>
+        <li><a href="internships.html">Internships</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="post.html" class="nav-btn">Post a Job</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <main class="container">
+    <section class="hero fade-in">
+      <h1>Find Your Dream Job or Internship</h1>
+      <p>Discover opportunities from top companies around the world.</p>
+      <form id="homeSearchForm" class="search-bar">
+        <input type="text" id="homeSearchInput" placeholder="Job title, keywords, or company..." required>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </section>
+
+    <!-- Featured Jobs -->
+    <section class="mb-5" style="margin-bottom: 4rem;">
+      <div class="section-header">
+        <h2 class="section-title">Featured Jobs</h2>
+        <a href="jobs.html" class="btn btn-outline">View All Jobs</a>
+      </div>
+      <div id="featuredJobs" class="cards-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Featured Internships -->
+    <section style="margin-bottom: 2rem;">
+      <div class="section-header">
+        <h2 class="section-title">Latest Internships</h2>
+        <a href="internships.html" class="btn btn-outline">View All Internships</a>
+      </div>
+      <div id="featuredInternships" class="cards-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="nav-container" style="padding: 0 2rem;">
+      <p>&copy; 2024 JobSeek Platform. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

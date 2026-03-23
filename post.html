@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post a Job - JobSeek</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1.2em" width="1.2em" xmlns="http://www.w3.org/2000/svg"><path d="M432 160h-96V112c0-26.5-21.5-48-48-48h-64c-26.5 0-48 21.5-48 48v48H80c-26.5 0-48 21.5-48 48v224c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V208c0-26.5-21.5-48-48-48zM208 112h96v48h-96v-48z"></path></svg>
+        JobSeek
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="jobs.html">Jobs</a></li>
+        <li><a href="internships.html">Internships</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="post.html" class="nav-btn">Post a Job</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="section-header" style="text-align: center; justify-content: center; margin-bottom: 3rem;">
+      <h1 class="section-title">Post a New Job</h1>
+      <p style="color: var(--text-muted); margin-top: 0.5rem;">Find the best talent for your company</p>
+    </div>
+
+    <div class="form-container fade-in">
+      <div id="formAlert" class="alert">
+        Job posted successfully! (Demo Mode: Added to your local session)
+      </div>
+
+      <form id="postJobForm">
+        <div class="form-group">
+          <label for="title">Job Title</label>
+          <input type="text" id="title" class="form-control" placeholder="e.g. Senior Product Manager" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="company">Company Name</label>
+          <input type="text" id="company" class="form-control" placeholder="e.g. TechCorp Inc." required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" id="location" class="form-control" placeholder="e.g. San Francisco, CA" required>
+          </div>
+          <div class="form-group">
+            <label for="type">Job Type</label>
+            <select id="type" class="form-control" required>
+              <option value="Full-time">Full-time</option>
+              <option value="Part-time">Part-time</option>
+              <option value="Contract">Contract</option>
+              <option value="Remote">Remote</option>
+              <option value="Internship">Internship</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Job Description</label>
+          <textarea id="description" class="form-control" placeholder="Describe the role, responsibilities, and requirements..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="font-size: 1.1rem; padding: 1rem;">Post Job Now</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="nav-container">
+      <p>&copy; 2024 JobSeek Platform. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
